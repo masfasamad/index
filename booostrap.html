@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Bootstrap CSS -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+    rel="stylesheet">
+
+  <title>WaffleX</title>
+
+  <style>
+
+    /* =========================
+       BODY
+    ========================= */
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background-color: #fff8ed;
+      font-family: Arial, sans-serif;
+      color: #2b170d;
+    }
+
+    /* =========================
+       LOGO / TITLE
+    ========================= */
+
+    body > h1 {
+      text-align: center;
+      background-color: #2b170d;
+      color: #f5b642;
+      margin: 0;
+      padding: 25px;
+      font-size: 42px;
+      font-weight: bold;
+      letter-spacing: 2px;
+    }
+
+    /* =========================
+       NAVBAR
+    ========================= */
+
+    .navbar {
+      background-color: white !important;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+      padding: 12px 5%;
+    }
+
+    .navbar-nav {
+      gap: 10px;
+    }
+
+    .nav-link {
+      color: #2b170d !important;
+      font-weight: bold;
+    }
+
+    .nav-link:hover {
+      color: #f5b642 !important;
+    }
+
+    .dropdown-menu {
+      border: none;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    }
+
+    .dropdown-item:hover {
+      background-color: #fff1d2;
+      color: #2b170d;
+    }
+
+    /* =========================
+       SEARCH BUTTON
+    ========================= */
+
+    .btn-outline-success {
+      color: #2b170d;
+      border-color: #f5b642;
+    }
+
+    .btn-outline-success:hover {
+      background-color: #f5b642;
+      border-color: #f5b642;
+      color: #2b170d;
+    }
+
+    /* =========================
+       POPOVER BUTTON
+    ========================= */
+
+    .popover-button {
+      text-align: center;
+      padding: 20px;
+    }
+
+    .popover-button .btn {
+      background-color: #f5b642;
+      border: none;
+      color: #2b170d;
+      font-weight: bold;
+    }
+
+    .popover-button .btn:hover {
+      background-color: #d99a20;
+      color: white;
+    }
+
+    /* =========================
+       CAROUSEL
+    ========================= */
+
+    .carousel {
+      width: 70%;
+      max-width: 900px;
+      height: 600px;
+      margin: 35px auto;
+      overflow: hidden;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    .carousel-item img {
+      width: 100%;
+      height: 600px;
+      object-fit: cover;
+    }
+
+    /* =========================
+       CARDS
+    ========================= */
+
+    .cards-container {
+      display: flex;
+      justify-content: center;
+      align-items: stretch;
+      gap: 40px;
+      flex-wrap: wrap;
+      padding: 50px 5%;
+    }
+
+    .card {
+      width: 18rem;
+      border: none;
+      border-radius: 15px;
+      overflow: hidden;
+      background-color: white;
+      box-shadow: 0 8px 20px rgba(43, 23, 13, 0.15);
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 30px rgba(43, 23, 13, 0.25);
+    }
+
+    .card-img-top {
+      height: 230px;
+      object-fit: cover;
+    }
+
+    .card-body {
+      padding: 20px;
+    }
+
+    .card-title {
+      color: #2b170d;
+      font-weight: bold;
+      font-size: 21px;
+      margin-bottom: 20px;
+    }
+
+    .card .btn-primary {
+      width: 100%;
+      background-color: #f5b642;
+      border: none;
+      color: #2b170d;
+      font-weight: bold;
+    }
+
+    .card .btn-primary:hover {
+      background-color: #d99a20;
+      color: white;
+    }
+
+    .card input {
+      border: 1px solid #d6b77c;
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    .wafflex-footer {
+      background-color: #2b170d;
+      color: white;
+      padding: 60px 8% 20px;
+      margin-top: 30px;
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 60px;
+    }
+
+    .footer-column h2 {
+      color: #f5b642;
+      font-size: 35px;
+      margin-bottom: 15px;
+    }
+
+    .footer-column h2 span {
+      color: white;
+    }
+
+    .footer-column h3 {
+      color: #f5b642;
+      font-size: 20px;
+      margin-bottom: 20px;
+    }
+
+    .footer-column p {
+      color: #ddd;
+      line-height: 1.8;
+      margin-bottom: 8px;
+    }
+
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 40px auto 0;
+      padding-top: 20px;
+      border-top: 1px solid #55382a;
+      text-align: center;
+    }
+
+    .footer-bottom p {
+      color: #aaa;
+      font-size: 14px;
+      margin: 0;
+    }
+
+    /* =========================
+       RESPONSIVE
+    ========================= */
+
+    @media (max-width: 768px) {
+
+      .carousel {
+        width: 90%;
+        height: 450px;
+      }
+
+      .carousel-item img {
+        height: 450px;
+      }
+
+      .footer-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 30px;
+      }
+    }
+
+    @media (max-width: 500px) {
+
+      body > h1 {
+        font-size: 32px;
+      }
+
+      .carousel {
+        width: 95%;
+        height: 350px;
+      }
+
+      .carousel-item img {
+        height: 350px;
+      }
+
+      .cards-container {
+        padding: 30px 15px;
+      }
+
+      .card {
+        width: 100%;
+        max-width: 350px;
+      }
+
+      .footer-column h2 {
+        font-size: 30px;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- =========================
+       TITLE
+  ========================= -->
+
+  <h1>WaffleX</h1>
+
+  <!-- =========================
+       NAVBAR
+  ========================= -->
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+    <div class="container-fluid">
+
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent">
+
+        <span class="navbar-toggler-icon"></span>
+
+      </button>
+
+      <div
+        class="collapse navbar-collapse"
+        id="navbarSupportedContent">
+
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+          <li class="nav-item">
+            <a class="nav-link active" href="#">
+              Home
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              Link
+            </a>
+          </li>
+
+          <li class="nav-item dropdown">
+
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              data-bs-toggle="dropdown">
+
+              Dropdown
+
+            </a>
+
+            <ul class="dropdown-menu">
+
+              <li>
+                <a class="dropdown-item" href="#">
+                  HOME
+                </a>
+              </li>
+
+              <li>
+                <a class="dropdown-item" href="#">
+                  MENU
+                </a>
+              </li>
+
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+
+              <li>
+                <a class="dropdown-item" href="#">
+                  RESERVATIONS
+                </a>
+              </li>
+
+              <li>
+                <a class="dropdown-item" href="#">
+                  ORDER ONLINE
+                </a>
+              </li>
+
+            </ul>
+
+          </li>
+
+        </ul>
+
+        <form class="d-flex">
+
+          <input
+            class="form-control me-2"
+            type="search"
+            placeholder="Search">
+
+          <button
+            class="btn btn-outline-success"
+            type="submit">
+
+            Search
+
+          </button>
+
+        </form>
+
+      </div>
+
+    </div>
+
+  </nav>
+
+  <!-- =========================
+       POPOVER BUTTON
+  ========================= -->
+
+  <div class="popover-button">
+
+    <button
+      type="button"
+      class="btn"
+      data-bs-toggle="popover"
+      data-bs-placement="top"
+      data-bs-content="Welcome to WaffleX!">
+
+      Click Me
+
+    </button>
+
+  </div>
+
+  <!-- =========================
+       CAROUSEL
+  ========================= -->
+
+  <div
+    id="carouselExampleIndicators"
+    class="carousel slide"
+    data-bs-ride="carousel">
+
+    <div class="carousel-indicators">
+
+      <button
+        type="button"
+        data-bs-target="#carouselExampleIndicators"
+        data-bs-slide-to="0"
+        class="active">
+      </button>
+
+      <button
+        type="button"
+        data-bs-target="#carouselExampleIndicators"
+        data-bs-slide-to="1">
+      </button>
+
+      <button
+        type="button"
+        data-bs-target="#carouselExampleIndicators"
+        data-bs-slide-to="2">
+      </button>
+
+    </div>
+
+    <div class="carousel-inner">
+
+      <div class="carousel-item active">
+
+        <img
+          src="./ccvc.jpg"
+          class="d-block w-100"
+          alt="Waffle">
+
+      </div>
+
+      <div class="carousel-item">
+
+        <img
+          src="./dfftdfv.jpg"
+          class="d-block w-100"
+          alt="Waffle">
+
+      </div>
+
+      <div class="carousel-item">
+
+        <img
+          src="./pexels-kunal-lakhotia-781256899-35054717.jpg"
+          class="d-block w-100"
+          alt="Waffle">
+
+      </div>
+
+    </div>
+
+    <button
+      class="carousel-control-prev"
+      type="button"
+      data-bs-target="#carouselExampleIndicators"
+      data-bs-slide="prev">
+
+      <span class="carousel-control-prev-icon"></span>
+
+    </button>
+
+    <button
+      class="carousel-control-next"
+      type="button"
+      data-bs-target="#carouselExampleIndicators"
+      data-bs-slide="next">
+
+      <span class="carousel-control-next-icon"></span>
+
+    </button>
+
+  </div>
+
+  <!-- =========================
+       WAFFLE CARDS
+  ========================= -->
+
+  <div class="cards-container">
+
+    <!-- CARD 1 -->
+
+    <div class="card">
+
+      <img
+        src="1.jpg"
+        class="card-img-top"
+        alt="Choco Lava Blast">
+
+      <div class="card-body">
+
+        <h5 class="card-title">
+          Choco Lava Blast
+        </h5>
+
+        <a
+          href="#"
+          class="btn btn-primary">
+
+          Buy It Yummy
+
+        </a>
+
+        <label
+          for="quantity1"
+          class="form-label mt-2">
+
+          Quantity
+
+        </label>
+
+        <input
+          type="number"
+          id="quantity1"
+          class="form-control"
+          value="1"
+          min="1">
+
+      </div>
+
+    </div>
+
+    <!-- CARD 2 -->
+
+    <div class="card">
+
+      <img
+        src="./3.jpg"
+        class="card-img-top"
+        alt="Waffle Crunch">
+
+      <div class="card-body">
+
+        <h5 class="card-title">
+          Waffle Crunch
+        </h5>
+
+        <a
+          href="#"
+          class="btn btn-primary">
+
+          Buy It Yummy
+
+        </a>
+
+        <label
+          for="quantity2"
+          class="form-label mt-2">
+
+          Quantity
+
+        </label>
+
+        <input
+          type="number"
+          id="quantity2"
+          class="form-control"
+          value="1"
+          min="1">
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- =========================
+       FOOTER
+  ========================= -->
+
+  <footer class="wafflex-footer">
+
+    <div class="footer-container">
+
+      <div class="footer-column">
+
+        <h2>
+          🧇 Waffle<span>X</span>
+        </h2>
+
+        <p>
+          Crispy, delicious waffles made fresh
+          for every sweet moment.
+        </p>
+
+      </div>
+
+      <div class="footer-column">
+
+        <h3>
+          Contact
+        </h3>
+
+        <p>
+          📍 Karachi, Pakistan
+        </p>
+
+        <p>
+          📞 +92 300 1234567
+        </p>
+
+        <p>
+          ✉️ hello@wafflex.com
+        </p>
+
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+
+      <p>
+        © 2026 WaffleX. All Rights Reserved.
+      </p>
+
+    </div>
+
+  </footer>
+
+  <!-- =========================
+       BOOTSTRAP JAVASCRIPT
+  ========================= -->
+
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js">
+  </script>
+
+  <!-- =========================
+       POPOVER FUNCTION
+  ========================= -->
+
+  <script>
+
+    var popoverTriggerList = [].slice.call(
+      document.querySelectorAll('[data-bs-toggle="popover"]')
+    );
+
+    var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+
+      return new bootstrap.Popover(popoverTriggerEl);
+
+    });
+
+  </script>
+
+</body>
+</html>
